@@ -48,7 +48,7 @@ const addManager  = () => {
         },
         {
             type: 'input',
-            name: 'office',
+            name: 'officeNumber',
             message: 'Enter the managers office number (Required)',
             validate: officeInput => {
                 if (officeInput) {
@@ -64,13 +64,18 @@ const addManager  = () => {
             message: 'Would you like to add this team member? (Required)',
             default: false
         }
-    ]);
+    ])
+    .then(managerData => {
+        const {name, id, email, officeNumber} = managerData
+        const manager = new Manager (name, id, email, officeNumber)
+        teamMembers.push(manager)
+    })
 };
 
-addManager()
-    .then(data => {
-        console.log(data)
-    })
+// addManager()
+//     .then(data => {
+//         console.log(data)
+//     })
 
 const addEngineer = () => {
     return inquire.prompt([
@@ -125,16 +130,21 @@ const addEngineer = () => {
         {
             type: 'confirm',
             name: 'addTeamMember',
-            message: 'Would you like to add this team member?',
+            message: 'Would you like to add this team member',
             default: false
         }
-    ]);
+    ])
+    .then(engineerData => {
+        const {name, id, email, github} = engineerData
+        const engineer = new Engineer (name, id, email, github)
+        teamMembers.push(engineer)
+    })
 };
 
-addEngineer()
-    .then(data => {
-        console.log(data)
-    })
+// addEngineer()
+//     .then(data => {
+//         console.log(data)
+//     })
 
 
 const addIntern = () => {
@@ -193,14 +203,25 @@ const addIntern = () => {
             message: 'Would you like to add this team member?',
             default: false
         }
-    ]);
+    ])
+    .then(internData => {
+        const {name, id, email, school} = internData
+        const intern = new Intern (name, id, email, school)
+        teamMembers.push(intern)
+        console.log(teamMembers)
+    })
 };
 
-
-addIntern()
-    .then(data => {
-        console.log(data)
-    })
+addManager()
+    .then(addEngineer)
+    .then(addIntern)
+        .then(teamMembers => {
+            console.log(teamMembers)
+        })
+// addIntern()
+//     .then(data => {
+//         console.log(data)
+//     })
 
 
 
