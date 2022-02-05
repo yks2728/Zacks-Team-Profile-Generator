@@ -1,12 +1,12 @@
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
-const Inquirer = require('inquirer');
+const inquire = require('inquirer');
 const fs = require('fs');
 const path = require('path');
 
-const promptUser = () => {
-    return Inquirer.prompt([
+const questions = () => {
+    return inquire.prompt([
         {
             type: 'input',
             name: 'name',
@@ -56,10 +56,23 @@ const promptUser = () => {
             }
         },
         {
-            type: 'list',
+            type: 'confirm',
             name: 'addTeamMember',
-            message: 'Would you like to add another team member? (Required)',
-            choices: ['Yes', 'No']
+            message: 'Would you like to add this team member? (Required)',
+            default: true
+        },
+        {
+            type: 'confirm',
+            name: 'addAnotherTeamMember',
+            message: 'Would you like to add another team member (Required)',
+            default: true
+        },
+        {
+            type: 'list',
+            name: 'Employee',
+            message: 'Select another employee to add to the team (Required)',
+            choices: ['Engineer', 'Intern']
         }
     ])
+
 }
