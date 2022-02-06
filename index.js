@@ -72,11 +72,6 @@ const addManager  = () => {
     })
 };
 
-// addManager()
-//     .then(data => {
-//         console.log(data)
-//     })
-
 const addEngineer = () => {
     return inquire.prompt([
         {
@@ -140,11 +135,6 @@ const addEngineer = () => {
         teamMembers.push(engineer)
     })
 };
-
-// addEngineer()
-//     .then(data => {
-//         console.log(data)
-//     })
 
 
 const addIntern = () => {
@@ -218,10 +208,6 @@ addManager()
         .then(teamMembers => {
             console.log(teamMembers)
         })
-// addIntern()
-//     .then(data => {
-//         console.log(data)
-//     })
 
 
 
