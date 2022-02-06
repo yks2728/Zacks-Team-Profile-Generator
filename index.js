@@ -72,6 +72,7 @@ const addManager = () => {
         const { name, id, email, officeNumber } = managerData;
         const manager = new Manager(name, id, email, officeNumber);
         teamMembers.push(manager);
+        createTeam();
       })
   );
 };
@@ -141,6 +142,7 @@ const addEngineer = () => {
         const { name, id, email, github } = engineerData;
         const engineer = new Engineer(name, id, email, github);
         teamMembers.push(engineer);
+        createTeam();
       })
   );
 };
@@ -210,27 +212,51 @@ const addIntern = () => {
         const { name, id, email, school } = internData;
         const intern = new Intern(name, id, email, school);
         teamMembers.push(intern);
+        createTeam();
         console.log(teamMembers);
       })
   );
 };
 
+function createTeam() {
+  inquire.prompt ([
+    {
+      type: 'list',
+      name: 'members',
+      message: 'Would you like to add another team member',
+      choices: ['Engineer', 'Intern', 'None']
+    }
+  ])
+  .then((teamMembersData) => {
+    switch (teamMembersData.members) {
+      case 'Engineer':
+        addEngineer();
+        break;
+      case 'Intern':
+        addIntern();
+        break;
+      default:
+        writeFile(generatePage(teamMembers))
+    }
+  })
+}
+
 addManager()
-  .then(addEngineer)
-  .then(addIntern)
-  .then(teamMembers => {
-      return generatePage(teamMembers);
-  })
-  .then(pageHTML => {
-      return writeFile(pageHTML);
-  })
-  .then(writeFileResponse => {
-      console.log(writeFileResponse);
-      return copyFile();
-  })
-  .then(copyFileResponse => {
-      console.log(copyFileResponse);
-  })
-  .catch(err => {
-      console.log(err);
-  });
+  // .then(addEngineer)
+  // .then(addIntern)
+  // .then(teamMembers => {
+  //     return generatePage(teamMembers);
+  // })
+  // .then(pageHTML => {
+  //     return writeFile(pageHTML);
+  // })
+  // .then(writeFileResponse => {
+  //     console.log(writeFileResponse);
+  //     return copyFile();
+  // })
+  // .then(copyFileResponse => {
+  //     console.log(copyFileResponse);
+  // })
+  // .catch(err => {
+  //     console.log(err);
+  // });
