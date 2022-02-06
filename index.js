@@ -5,7 +5,7 @@ const inquire = require("inquirer");
 const fs = require("fs");
 const path = require("path");
 const generatePage = require("./src/page-template.js");
-const { writeFile } = require("./utils/generate-site.js");
+const { writeFile, copyFile } = require("./utils/generate-site.js");
 const teamMembers = [];
 
 // add manager prompts

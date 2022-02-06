@@ -16,4 +16,20 @@ const writeFile = fileContent => {
     });
 };
 
-module.exports = writeFile
+const copyFile = () => {
+    return new Promise((resolve, reject) => {
+        fs.copyFile('./src/style.css', './dis/style.css', err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+
+            resolve({
+                ok: true,
+                message: 'Stylesheet created!'
+            });
+        });
+    });
+};
+
+module.exports = { writeFile, copyFile};
