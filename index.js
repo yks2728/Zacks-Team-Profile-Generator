@@ -4,7 +4,7 @@ const Engineer = require("./lib/Engineer");
 const inquire = require("inquirer");
 const path = require("path");
 const generatePage = require("./src/page-template.js");
-const { writeFile, copyFile } = require("./utils/generate-site.js");
+const { writeFile } = require("./utils/generate-site.js");
 const teamMembers = [];
 
 // add manager prompts
@@ -242,21 +242,3 @@ function createTeam() {
 }
 
 addManager()
-  // .then(addEngineer)
-  // .then(addIntern)
-  // .then(teamMembers => {
-  //     return generatePage(teamMembers);
-  // })
-  // .then(pageHTML => {
-  //     return writeFile(pageHTML);
-  // })
-  // .then(writeFileResponse => {
-  //     console.log(writeFileResponse);
-  //     return copyFile();
-  // })
-  // .then(copyFileResponse => {
-  //     console.log(copyFileResponse);
-  // })
-  // .catch(err => {
-  //     console.log(err);
-  // });

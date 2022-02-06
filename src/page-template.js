@@ -8,9 +8,9 @@ const teamGenerate = (team) => {
             
             </div>
             <div class="card-body">
-            ${manager.getId()}
-            ${manager.getEmail()}
-            ${manager.getofficeNumber()}
+                <h3> Id: ${manager.getId()}</h3>
+                <h3> Email: ${manager.getEmail()}</h3>
+                <h3> Office Number: ${manager.getofficeNumber()}</h3>
             </div>
         </div>
             
@@ -26,9 +26,9 @@ const teamGenerate = (team) => {
                 <h3>${engineer.getRole()}</h3>
             </div>
             <div class="card-body">
-            ${engineer.getId()}
-            ${engineer.getEmail()}
-            ${engineer.getGithub()}
+                <h3> Id: ${engineer.getId()}</h3>
+                <h3> Email: ${engineer.getEmail()}</h3>
+                <h3> Github: ${engineer.getGithub()}</h3>
             </div>
         </div>
         `;
@@ -41,9 +41,9 @@ const teamGenerate = (team) => {
                 <h3>${intern.getRole()}</h3>  
             </div>
             <div class="card-body">
-            ${intern.getId()}
-            ${intern.getEmail()}
-            ${intern.getSchool()}
+                <h3> Id: ${intern.getId()}</h3>
+                <h3> Email: ${intern.getEmail()}</h3>
+                <h3> School: ${intern.getSchool()}</h3>
             </div>
         </div>
         `;
