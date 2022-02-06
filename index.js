@@ -219,7 +219,7 @@ addManager()
   .then(addEngineer)
   .then(addIntern)
   .then(teamMembers => {
-    return generatePage(teamMembers);
+      return generatePage(teamMembers);
   })
   .then(pageHTML => {
       return writeFile(pageHTML);
