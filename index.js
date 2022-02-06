@@ -7,7 +7,7 @@ const generatePage = require('./src/page-template.js');
 const { writeFile } = require('./utils/generate-site.js');
 const teamMembers = [];
 
-
+// add manager prompts
 const addManager  = () => {
     return inquire.prompt([
         {
@@ -65,6 +65,7 @@ const addManager  = () => {
             default: false
         }
     ])
+    // manager object
     .then(managerData => {
         const {name, id, email, officeNumber} = managerData
         const manager = new Manager (name, id, email, officeNumber)
@@ -72,6 +73,7 @@ const addManager  = () => {
     })
 };
 
+// add engineer prompts
 const addEngineer = () => {
     return inquire.prompt([
         {
@@ -129,6 +131,7 @@ const addEngineer = () => {
             default: false
         }
     ])
+    // engineer object
     .then(engineerData => {
         const {name, id, email, github} = engineerData
         const engineer = new Engineer (name, id, email, github)
@@ -136,7 +139,7 @@ const addEngineer = () => {
     })
 };
 
-
+// add intern prompts
 const addIntern = () => {
     return inquire.prompt([
         {
@@ -194,6 +197,7 @@ const addIntern = () => {
             default: false
         }
     ])
+    // intern object
     .then(internData => {
         const {name, id, email, school} = internData
         const intern = new Intern (name, id, email, school)
