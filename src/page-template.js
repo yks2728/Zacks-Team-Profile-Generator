@@ -1,5 +1,5 @@
-module.exports = teamData => {
-    const { managerData, engineerData, internData} = teamData
+module.exports = teamMembers => {
+    const { managerData, engineerData, internData} = teamMembers
 
     return `
     <!DOCTYPE html>

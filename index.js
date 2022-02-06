@@ -2,7 +2,6 @@ const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const inquire = require("inquirer");
-const fs = require("fs");
 const path = require("path");
 const generatePage = require("./src/page-template.js");
 const { writeFile, copyFile } = require("./utils/generate-site.js");
@@ -219,6 +218,19 @@ const addIntern = () => {
 addManager()
   .then(addEngineer)
   .then(addIntern)
-  .then((teamMembers) => {
-    console.log(teamMembers);
+  .then(teamMembers => {
+    return generatePage(teamMembers);
+  })
+  .then(pageHTML => {
+      return writeFile(pageHTML);
+  })
+  .then(writeFileResponse => {
+      console.log(writeFileResponse);
+      return copyFile();
+  })
+  .then(copyFileResponse => {
+      console.log(copyFileResponse);
+  })
+  .catch(err => {
+      console.log(err);
   });
